@@ -1,0 +1,26 @@
+<%-include('header') %>
+
+    <body id="signin_form">
+        <div id="form">
+
+            <form class="form-signin" action="/login" method="POST">
+
+                <img class="mb-4" src="images/images.png" alt="" width="140" height="140">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+                <label for="email" class="sr-only">Email address</label>
+                <input type="email" id="email" class="form-control" name="username" placeholder="Email address"
+                    required="" autofocus="">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" required=""
+                    name="password">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            </form>
+        </div>
+
+    </body>

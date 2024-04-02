@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: medium;
+
+}
+
+#body {
+    background-image: url(https://www.worldatlas.com/upload/be/9e/75/shutterstock-142872442.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.heading {
+    color: antiquewhite;
+    text-align: left;
+    font-size: 60px;
+    font-family: cursive fantasy;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: lightblue;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: cadetblue;
+}
+
+main {
+    padding: 20px;
+}
+
+h3 {
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+P {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 10%;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: orchid;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: pink;
+}
+
+
+
+#form {
+    background-color: aliceblue;
+    width: 50%;
+    padding: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+}
+
+#form2 {
+    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/10/Blue-Blank-Image.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.form-table {
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(255, 250, 200, 0.5);
+    border-radius: 10px;
+    background-color: rgba(255, 250, 200, 0.9);
+    width: 650px;
+    height: 60vh;
+}
+
+footer {
+    align-items: center;
+    justify-content: space-around;
+
+    color: aquamarine;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+footer h4 {
+    margin-top: 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+#signin_form {
+    padding-top: 100px
+}
+
+.mb-4 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
