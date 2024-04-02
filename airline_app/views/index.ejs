@@ -1,0 +1,70 @@
+<body id="body">
+    <%-include ('header') %>
+        <main id="'homepageContent" class="content">
+            <h3>Welcome to Travel Buddy!</h3>
+            <p>
+                Are you ready to take flight?<br>
+                Look no further! Travel Buddy Airline Ticketing System is your number one gateway to seamless travel
+                experiences. <br>
+                Whether you're planning a business trip, a family vacation, or spontaneous adventure, we've got you
+                completely covered. <br>
+                Explore our extensive range of flights,discover unbeatable deals, and book your fantastic journey
+                stress-free. <br>
+                <br>
+                We understand how stressful booking flights can be, especially when you are trying to plan ahead with a
+                tight budget. But don't worry-you <br>
+                can keep your flight booking in the cart, and we will ensure no one takes that spot. <br>
+                Whether you're booking a flight last minute, ahead of time, or a week before your trip, we got you
+                covered. <br>
+                <br>
+                Fasten your seatbelt, and let's soar like eagles together! ✈️🛩️<br>
+                And remember, if you ever need to travel anywhere, look no further than Travel Buddy. We are your
+                buddies for this trip. <br>
+                Ready to go on an adventure with Travel Buddies? ✈️🌍🗺️<br>
+                Sign in now or sign up to get started! <a href="#" onclick="showModal()">Get Started</a>
+            </p>
+            <%-include('footer') %>
+        </main>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p>Sign up or Sign in if you already have an account with us to get started!</p>
+                <button onclick="loadSignInForm()">Sign In</button>
+                <button onclick="loadSignUpForm()">Sign Up</button>
+            </div>
+        </div>
+        <script>
+            function showHomepage() {
+                var homepageContent = document.getElementById('homepageContent');
+                homepageContent.style.display = 'block';
+                hideOtherContent(homepageContent);
+                closeModal();
+            }
+
+            function hideOtherContent(exceptElement) {
+                var allContent = document.querySelectorAll('.content');
+                allContent.forEach(content => {
+                    if (content !== exceptElement) {
+                        content.style.display = 'none';
+                    }
+                });
+            }
+            function showModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+            }
+
+            function closeModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            }
+
+            function loadSignInForm() {
+                window.location.href = '/sign_in_form';
+            }
+
+            function loadSignUpForm() {
+                window.location.href = '/sign_up_form';
+            }
+        </script>
+</body>

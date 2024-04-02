@@ -1,0 +1,60 @@
+<header>
+    <h1 class="heading">Travel Buddy</h1>
+    <nav>
+        <ul>
+            <li><a href="/" onclick="showHomepage()">Homepage</a></li>
+            <li><a href="#" onclick="showSignIn()">Sign In</a></li>
+            <li><a href="#" onclick="showSignUp()">Sign Up</a></li>
+            <li><a href="#" onclick="showSupport()">Support</a></li>
+        </ul>
+    </nav>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Sign up or Sign in if you already have an account with us to get started!</p>
+            <button onclick="loadSignInForm()">Sign In</button>
+            <button onclick="loadSignUpForm()">Sign Up</button>
+        </div>
+    </div>
+    <script>
+        function showHomepage() {
+            var homepageContent = document.getElementById('homepageContent');
+            homepageContent.style.display = 'block';
+            hideOtherContent(homepageContent);
+            closeModal();
+        }
+
+        function hideOtherContent(exceptElement) {
+            var allContent = document.querySelectorAll('.content');
+            allContent.forEach(content => {
+                if (content !== exceptElement) {
+                    content.style.display = 'none';
+                }
+            });
+        }
+
+        function showSignIn() {
+            window.location.href = '/sign_in_form';
+
+        }
+
+
+        function showSignUp() {
+            window.location.href = '/sign_up_form';
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        function loadSignUpForm() {
+            window.location.href = '/sign_up_form';
+        }
+        function showSupport() {
+            window.location.href = '/support';
+
+        }
+
+    </script>
+</header>

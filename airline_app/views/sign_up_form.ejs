@@ -1,0 +1,93 @@
+<body>
+    <%-include('header') %>
+        <div id="form2">
+            <form action="/sign_up_form" method="POST">
+                <table class="form-table">
+                    <tr>
+                        <td><label for="firstName">First Name: </label></td>
+                        <td><input type="text" id="fname" name="firstName" maxlength="20" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lastName">Last Name: </label></td>
+                        <td><input type="text" id="lname" name="lastName" maxlength="20" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email Address: </label></td>
+                        <td><input type="email" id="email" name="email" maxlength="100" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email2">Reenter Email Address: </label></td>
+                        <td><input type="email" id="email2" name="email2" maxlength="100" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="username">Username: </label></td>
+                        <td><input type="username" id="username" name="username" maxlength="15" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password: </label></td>
+                        <td><input type="password" id="password" name="password" minlenght="8" maxlength="10" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td id="passwordMessage" style="color: red;"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="birthday">BirthDate: </label></td>
+                        <td><input type="date" id="birthday" name="birthday" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Gender: </label></td>
+                        <td>
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Male</label><br>
+                            <input type="radio" id="female" name="gender" value="female" required>
+                            <label for="female">Female</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script>
+            document.getElementById('password').addEventListener('input', function () {
+                var password = document.getElementById('password').value;
+                var passwordMessage = document.getElementById('passwordMessage');
+                var valid = true;
+
+                if (password.length < 8 || password.length > 10) {
+                    passwordMessage.innerHTML = 'Password must be between 8 and 10 characters.';
+                    valid = false;
+                } else {
+                    passwordMessage.innerHTML = '';
+                }
+
+                if (!/[A-Z]/.test(password)) {
+                    passwordMessage.innerHTML += 'Password must contain at least one uppercase letter.';
+                    valid = false;
+                }
+
+                if (!/[a-z]/.test(password)) {
+                    passwordMessage.innerHTML += 'Password must contain at least one lowercase letter.';
+                    valid = false;
+                }
+
+                if (!/\d/.test(password)) {
+                    passwordMessage.innerHTML += 'Password must contain at least one number.';
+                    valid = false;
+                }
+
+                if (!/[!@#$%^&*()_+|-=|[\]{};':"\\|,.<>\/?]/.test(password)) {
+                    passwordMessage.innerHTML += 'Password must contain at least one special character.';
+                    valid = false;
+                }
+
+                if (valid) {
+                    passwordMessage.innerHTML = '';
+                }
+            });
+        </script>
+        <%-include('footer') %>
+</body>
