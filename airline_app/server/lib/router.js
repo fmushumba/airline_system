@@ -77,7 +77,7 @@ router.post('/register', async (req, res) => {
 
         console.log(user)
         await user.save(user.id, user.name.first, user.name.last, user.email, user.security.passwordHash)
-        res.status(200).json(user)
+        res.status(200).redirect('sign_in_form')
 
     } catch (e) {
         throw new Error(e);
@@ -126,7 +126,7 @@ router.post('/login', (req, res, next) => {
             })
 
         })(req, res, next)
-
+    cd
 }
 );
 //

@@ -1,70 +1,96 @@
 <body id="body">
     <%-include ('header') %>
         <main id="'homepageContent" class="content">
-            <h3>Welcome to Travel Buddy!</h3>
-            <p>
-                Are you ready to take flight?<br>
-                Look no further! Travel Buddy Airline Ticketing System is your number one gateway to seamless travel
-                experiences. <br>
-                Whether you're planning a business trip, a family vacation, or spontaneous adventure, we've got you
-                completely covered. <br>
-                Explore our extensive range of flights,discover unbeatable deals, and book your fantastic journey
-                stress-free. <br>
-                <br>
-                We understand how stressful booking flights can be, especially when you are trying to plan ahead with a
-                tight budget. But don't worry-you <br>
-                can keep your flight booking in the cart, and we will ensure no one takes that spot. <br>
-                Whether you're booking a flight last minute, ahead of time, or a week before your trip, we got you
-                covered. <br>
-                <br>
-                Fasten your seatbelt, and let's soar like eagles together! ✈️🛩️<br>
-                And remember, if you ever need to travel anywhere, look no further than Travel Buddy. We are your
-                buddies for this trip. <br>
-                Ready to go on an adventure with Travel Buddies? ✈️🌍🗺️<br>
-                Sign in now or sign up to get started! <a href="#" onclick="showModal()">Get Started</a>
-            </p>
-            <%-include('footer') %>
+            <h2>Welcome to Travel Buddy!</h2>
+            <div>
+                <h3>ARE YOU READY TO TAKE A FLIGHT ✈️🌍🗺️</h3>
+                <p>Look no further! Travel Buddy Airline Ticketing System is your number one gateway to seamless travel
+                    experiences. <br></p>
+
+            </div>
+            <div id='flight_search'>
+                <h3 style="color: green; ">SEARCH FLIGHTS</h3>
+                <form style="padding-top: 20px;" action="#" method="post">
+                    <table>
+                        <tr>
+
+                            <td><input type="text" id="leavingFrom" name="leavingFrom" placeholder="Leaving from"></td>
+                            <td><input type="text" id="goingTo" name="goingTo" placeholder="Going to"></td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <label for="departureDate">Departure Date:</label>
+                                <input type="date" id="departureDate" name="departureDate" placeholder="Departure Date">
+                            </td>
+                            <td>
+                                <label for="returnDate">Return Date:</label>
+                                <input type="date" id="returnDate" name="returnDate" placeholder="Return Date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="quantity">Number of travelers:</label>
+                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                            </td>
+                            <td style="background-color: green;"><input type="submit" value="Submit"></td>
+                        </tr>
+                    </table>
+                </form>
+
+
+            </div>
+
+
         </main>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <p>Sign up or Sign in if you already have an account with us to get started!</p>
-                <button onclick="loadSignInForm()">Sign In</button>
-                <button onclick="loadSignUpForm()">Sign Up</button>
+        <div id="travel_suggestions">
+            <div>
+                <p>Want to go Somewhere else:</p>
+                <form class="example" action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script>
-            function showHomepage() {
-                var homepageContent = document.getElementById('homepageContent');
-                homepageContent.style.display = 'block';
-                hideOtherContent(homepageContent);
-                closeModal();
-            }
 
-            function hideOtherContent(exceptElement) {
-                var allContent = document.querySelectorAll('.content');
-                allContent.forEach(content => {
-                    if (content !== exceptElement) {
-                        content.style.display = 'none';
-                    }
-                });
-            }
-            function showModal() {
-                var modal = document.getElementById('myModal');
-                modal.style.display = 'block';
-            }
+        <%-include('footer') %>
 
-            function closeModal() {
-                var modal = document.getElementById('myModal');
-                modal.style.display = 'none';
-            }
-
-            function loadSignInForm() {
-                window.location.href = '/sign_in_form';
-            }
-
-            function loadSignUpForm() {
-                window.location.href = '/sign_up_form';
-            }
-        </script>
 </body>
