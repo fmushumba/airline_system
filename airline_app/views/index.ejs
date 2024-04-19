@@ -1,20 +1,69 @@
 <body id="body">
+
     <%-include ('header') %>
-        <main id="'homepageContent" class="content">
+
+        <script>
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+            function initMap() {
+
+                const input1 = document.getElementById("leavingFrom");
+
+                const input2 = document.getElementById("goingTo")
+                const input_locations = [input1, input2]
+
+                const options = {
+
+                    componentRestrictions: { country: "us" },
+                    fields: ["icon", "name"],
+                    strictBounds: true,
+                    types: ['airport'],
+                };
+
+                for (let i = 0; i < input_locations.length; i++) {
+
+                    const autocomplete = new google.maps.places.Autocomplete(input_locations[i], options);
+                    console.log(autocomplete)
+                    // Set initial restriction to the greater list of countries.
+                    autocomplete.setComponentRestrictions({
+                        country: ["us"],
+                    });
+
+
+                }
+            }
+
+
+
+            window.initMap = initMap;
+
+
+        </script>
+
+
+        <main id="homepageContent" class="content">
+
+
+
             <h2>Welcome to Travel Buddy!</h2>
             <div>
                 <h3>ARE YOU READY TO TAKE A FLIGHT ✈️🌍🗺️</h3>
-                <p>Look no further! Travel Buddy Airline Ticketing System is your number one gateway to seamless travel
+                <p>Look no further! Travel Buddy Airline Ticketing System is your number one gateway to seamless
+                    travel
                     experiences. <br></p>
 
             </div>
             <div id='flight_search'>
                 <h3 style="color: green; ">SEARCH FLIGHTS</h3>
-                <form style="padding-top: 20px;" action="#" method="post">
+                <form id='flight_search_form' style="padding-top: 20px;" action="#" method="post">
                     <table>
-                        <tr>
 
-                            <td><input type="text" id="leavingFrom" name="leavingFrom" placeholder="Leaving from"></td>
+                        <tr style="border: 1px solid black;">
+
+                            <td><input type="text" id="leavingFrom" name="leavingFrom" placeholder="Leaving from" />
+
+                            </td>
                             <td><input type="text" id="goingTo" name="goingTo" placeholder="Going to"></td>
                         </tr>
                         <tr>
@@ -22,6 +71,8 @@
                             <td>
                                 <label for="departureDate">Departure Date:</label>
                                 <input type="date" id="departureDate" name="departureDate" placeholder="Departure Date">
+                                <p id="departureDateError" style="color: red; display: none;">Departure date must
+                                    not be in the past.</p>
                             </td>
                             <td>
                                 <label for="returnDate">Return Date:</label>
@@ -58,7 +109,8 @@
                         <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
                                 of
                                 the card's content.</p>
                         </div>
@@ -70,7 +122,8 @@
                         <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
                                 of
                                 the card's content.</p>
                         </div>
@@ -82,7 +135,8 @@
                         <img style="height: 12rem;" class="card-img-top" src="/images/Iowa Spring Tulips.jpg.webp"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
                                 of
                                 the card's content.</p>
                         </div>
@@ -93,4 +147,22 @@
 
         <%-include('footer') %>
 
+
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&loading=async&libraries=places&callback=initMap">
+                    defer
+                    document.getElementById('flight_search_form').addEventListener('submit', function (event) {
+                        const departureDateInput = document.getElementById('departureDate');
+                        const departureDate = new Date(departureDateInput.value);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0); // Remove time part
+
+                        if (departureDate < today) {
+                            document.getElementById('departureDateError').style.display = 'block';
+                            event.preventDefault(); // Prevent form from submitting
+                        } else {
+                            document.getElementById('departureDateError').style.display = 'none';
+                        }
+                    });
+                </script>
 </body>

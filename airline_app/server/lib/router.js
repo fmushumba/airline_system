@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     const locals = {
         title: 'Travel buddy home'
     };
-    res.render("index", { locals });
+    res.render("index",);
 
 })
 router.get('/sign_in_form', (req, res) => {
@@ -126,7 +126,7 @@ router.post('/login', (req, res, next) => {
             })
 
         })(req, res, next)
-    cd
+
 }
 );
 //
