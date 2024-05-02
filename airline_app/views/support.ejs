@@ -1,1 +1,63 @@
-<%-include('header') %>
+<body id="support_body">
+    <script src="/socket.io/socket.io.js"></script>
+
+    <%-include('header') %>
+        <h1>Airline Support Chatbot</h1>
+        <div id="chat-container">
+            <div id="chat-window" style="background: #f1f1f1; padding: 10px; height: 300px; overflow-y: scroll;">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div id="chat-input">
+                <input type="text" id="message" placeholder="Type your message..." autofocus>
+                <button id="send">Send</button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const socket = io();
+                const messageInput = document.getElementById('message');
+                const sendButton = document.getElementById('send');
+                const chatWindow = document.getElementById('chat-window');
+
+                sendButton.addEventListener('click', sendUserMessage);
+                messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendUserMessage();
+                    }
+                });
+
+                socket.on('chat response', (response) => {
+                    displayMessage('Bot', response);
+                });
+
+                socket.on('connect_error', () => {
+                    displayMessage('System', 'Connection error, please try again later.');
+                });
+
+                function sendUserMessage() {
+                    console.log("Send button clicked.");
+                    const message = messageInput.value.trim();
+                    if (message !== '') {
+                        displayMessage('User', message);
+                        socket.emit('chat message', message);
+                        messageInput.value = '';
+                    }
+                }
+
+                function displayMessage(sender, text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.textContent = `${sender}: ${text}`;
+                    messageDiv.style.padding = '5px';
+                    messageDiv.style.marginBottom = '2px';
+                    messageDiv.style.borderRadius = '5px';
+                    if (sender === 'User') {
+                        messageDiv.style.backgroundColor = '#D0E2FF';
+                    } else if (sender === 'Bot') {
+                        messageDiv.style.backgroundColor = '#F0F0F0';
+                    }
+                    chatWindow.appendChild(messageDiv);
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                }
+            });
+        </script>
+</body>

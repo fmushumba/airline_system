@@ -246,7 +246,7 @@ footer {
     align-items: center;
     justify-content: space-around;
 
-    color: aquamarine;
+    color: white;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
@@ -261,4 +261,40 @@ footer p {
 
 #signin_form {
     padding-top: 100px
+}
+
+#airport_info {
+    height: 50px;
+    margin-top: 50px;
+    border: solid 1px grey;
+}
+
+.dep_arr_times {
+    font-size: large;
+    color: rgb(96, 115, 143);
+    font-weight: bold;
+}
+
+/* styles.css */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Spacing between each form group */
+}
+
+.form-group label {
+    flex: 0 0 120px;
+    margin-right: 10px;
+
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+
+
+    border: 1px solid #ccc;
+    padding: 5px;
+
 }

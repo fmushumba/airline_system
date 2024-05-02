@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import constraints from '../lib/constraint.js'
 import validate from 'validate.js'
 import bcrypt from 'bcrypt'
-import client from '../../index.js'
+import { client, stripe } from '../../index.js'
 let user = class User {
     constructor() {
         this.created = new Date();
