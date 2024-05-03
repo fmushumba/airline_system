@@ -1,0 +1,166 @@
+<body>
+    <h3 style="padding: 15px; color: grey; text-align: center;">Check Out for your flight</h3>
+
+    <% if (flights.length> 0) { %>
+        <% let totalPrice=0; %>
+            <% flights.forEach((flight)=> { %>
+                <% totalPrice +=parseFloat(flight.basePrice); %>
+                    <% }); %>
+
+                        <h5 style="margin: 10px;" class="card-title">Total Price: $<%= totalPrice %>
+                        </h5>
+
+                        <% flights.forEach((flight, index)=> { %>
+                            <div class="card w-85" style="margin: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Flight from <%= flight.originName %> to <%=
+                                                flight.destinationName %>
+                                    </h5>
+                                    <p><b>Departure:</b>
+                                        <%= new Date(flight.departureDateTime).toLocaleString('en-US', {
+                                            weekday: 'short' , month: 'short' , day: 'numeric' }) %>
+                                    </p>
+                                    <p><b>Price:</b> $<%= flight.basePrice %>
+                                    </p>
+
+                                    <!-- Hidden Fields for Flight Data -->
+                                    <input type="hidden" name="flights[<%= index %>][originName]"
+                                        value="<%= flight.originName %>">
+                                    <input type="hidden" name="flights[<%= index %>][destinationName]"
+                                        value="<%= flight.destinationName %>">
+                                    <input type="hidden" name="flights[<%= index %>][departureDateTime]"
+                                        value="<%= flight.departureDateTime %>">
+                                    <input type="hidden" name="flights[<%= index %>][price]"
+                                        value="<%= flight.basePrice %>">
+                                </div>
+                            </div>
+                            <% }); %>
+
+                                <!-- Checkout Form for Passenger Information and Payment -->
+                                <form id="payment-form" action="/proceed_to_checkout" method="post">
+                                    <div class="card w-85" style="margin: 10px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Passenger Information</h5>
+                                            <div class="card-text">
+                                                <div class="form-group">
+                                                    <label for="firstName">First Name:</label>
+                                                    <input type="text" id="firstName" name="firstName" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastName">Last Name:</label>
+                                                    <input type="text" id="lastName" name="lastName" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="gender">Gender:</label>
+                                                    <select id="gender" name="gender" required>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dob">Date of Birth:</label>
+                                                    <input type="date" id="dob" name="dob" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="contactInfo">Email:</label>
+                                                    <input type="email" id="contactInfo" name="contactInfo" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card w-75" style="margin: 10px;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Enter card information</h5>
+                                            <p class="card-text">
+                                            <div id="card-element" style="margin: 10px;height:50px; width: 100%;"></div>
+                                            <div id="card-errors" role="alert" style="color: red;"></div>
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <!-- Hidden Field for Total Price -->
+                                    <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+
+                                    <button type="submit"
+                                        style="background-color: green; margin-left: 10px; margin-right: 80px;"
+                                        class="checkout-button" aria-label="Proceed to checkout for payment">
+                                        Proceed to Checkout
+                                    </button>
+                                </form>
+                                <% } else { %>
+                                    <p>No flights in your cart.</p>
+                                    <% } %>
+                                        <div style="height: 100px;"></div>
+
+                                        <%- include('footer') %>
+                                            <script src="https://js.stripe.com/v3/"></script>
+                                            <script async>// Load Stripe
+                                                const stripe = Stripe('pk_test_51PBGMcCCz4Kbv9lEMJxM013JYOTFcmLB80nB75ZHnON19axegYvl2hNQ5kHlxYzDoNeovRXHO7KPXCpv7zQYOU9E00QOMPRV2K'); // Replace with your publishable key
+                                                const elements = stripe.elements();
+                                                var style = {
+                                                    base: {
+                                                        color: '#32325d',
+                                                        lineHeight: '24px',
+                                                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                                                        fontSmoothing: 'antialiased',
+                                                        fontSize: '16px', // Sync with CSS font size
+                                                        '::placeholder': {
+                                                            color: '#aab7c4'
+                                                        }
+                                                    },
+                                                    invalid: {
+                                                        color: '#fa755a',
+                                                        iconColor: '#fa755a'
+                                                    }
+                                                };
+
+                                                // Create an instance of the card Element
+                                                const card = elements.create('card');
+                                                card.mount('#card-element');
+
+                                                // Handle real-time validation errors from the card Element
+                                                card.addEventListener('change', function (event) {
+                                                    var displayError = document.getElementById('card-errors');
+                                                    if (event.error) {
+                                                        displayError.textContent = event.error.message;
+                                                    } else {
+                                                        displayError.textContent = '';
+                                                    }
+                                                });
+
+                                                // Handle form submission
+                                                const form = document.getElementById('payment-form');
+                                                form.addEventListener('submit', function (event) {
+                                                    event.preventDefault();
+
+                                                    stripe.createToken(card).then(function (result) {
+                                                        if (result.error) {
+                                                            // Inform the user if there was an error
+                                                            var errorElement = document.getElementById('card-errors');
+                                                            errorElement.textContent = result.error.message;
+                                                        } else {
+                                                            // Send the token to your server
+                                                            stripeTokenHandler(result.token);
+                                                        }
+                                                    });
+                                                });
+
+                                                function stripeTokenHandler(token) {
+                                                    // Insert the token ID into the form so it gets submitted to the server
+                                                    const form = document.getElementById('payment-form');
+                                                    const hiddenInput = document.createElement('input');
+                                                    hiddenInput.setAttribute('type', 'hidden');
+                                                    hiddenInput.setAttribute('name', 'stripeToken');
+                                                    hiddenInput.setAttribute('value', token.id);
+                                                    form.appendChild(hiddenInput);
+
+                                                    // Submit the form
+                                                    form.submit();
+                                                }
+                                            </script>
+</body>

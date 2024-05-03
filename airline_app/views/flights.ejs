@@ -1,0 +1,100 @@
+<body>
+    <%-include('header') %>
+
+        <div class="container" id="airport_info">
+            <div class="row" style="height: 100%;">
+                <div class="col" id=" fight_info_departure" style="border-right: 1px solid grey; height: 100%;">
+                    <div class=" dep_arr_times">
+
+                        <%= travel_info.origin_code %> &#8594 <%= travel_info.destination_code %>
+                    </div>
+                    <div>Departure: <%= new Date(travel_info.departure).toLocaleString('en-US', { weekday: 'short' ,
+                            month: 'short' , day: 'numeric' }) %>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class=" dep_arr_times">
+                        <%= travel_info.destination_code %> &#8594 <%= travel_info.origin_code %>
+                    </div>
+                    <div>Return: <%= new Date(travel_info.return).toLocaleString('en-US', { weekday: 'short' ,
+                            month: 'short' , day: 'numeric' }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <% for(let flight of flight_info) { %>
+            <form method="post" action="/select_flight"> <!-- Change the action URL to your flight booking endpoint -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12" style="height: 100%; width: 100%;">
+                            <div style="background-color: red;"></div>
+                            <div class="card w-100" style="height: 200px;">
+                                <div class="card-body">
+                                    <div
+                                        style="display: flex; background-color: rgb(89, 96, 136); margin-top: 0; border: 1px solid rgb(89, 96, 136); height: 50px;">
+                                        <div style="width: 100%;">
+                                            <h4 style="color: white;">$<%= flight.base_price %>
+                                            </h4>
+                                        </div>
+                                        <div style="float: right;">
+                                            <button type="submit" class="btn btn-primary"
+                                                style="background-color: green; border-color: green;">Select</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="card-text">
+                                        <div style="display: flex;">
+                                            <div style="width: 150px;">
+                                                <img style="width:80%;" src="<%= flight.logos %>"
+                                                    alt="<%= flight.airline_name %> logo">
+                                            </div>
+                                            <div style="margin-right: 10px; margin-top: auto; margin-bottom: auto;">
+                                                Departure: <%= flight.origin_name %><br>
+                                                    Destination: <%= flight.destination_name %>
+                                            </div>
+                                            <div style="margin-top: auto; margin-bottom: auto;">
+                                                Departure Time: <%= new
+                                                    Date(flight.departure_datetime).toLocaleString('en-US', {
+                                                    hour: '2-digit' , minute: '2-digit' }) %><br>
+                                                    Arrival Time: <%= new
+                                                        Date(flight.arrival_datetime).toLocaleString('en-US', {
+                                                        hour: '2-digit' , minute: '2-digit' }) %>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: end; font-weight: 800;">
+                                            <p>
+                                                <%= flight.fare_class_name %>
+                                            </p>
+                                        </div>
+                                        </p>
+                                    </div>
+                                    <!-- Hidden inputs to submit flight details -->
+                                    <input type="hidden" name="flight_id" value="<%= flight.id %>">
+                                    <input type="hidden" name="base_price" value="<%= flight.base_price %>">
+                                    <input type="hidden" name="origin_name" value="<%= flight.origin_name %>">
+                                    <input type="hidden" name="destination_name" value="<%= flight.destination_name %>">
+                                    <input type="hidden" name="departure_datetime"
+                                        value="<%= flight.departure_datetime %>">
+                                    <input type="hidden" name="arrival_datetime" value="<%= flight.arrival_datetime %>">
+                                    <input type="hidden" name="fare_class" value="<%= flight.fare_class_name %>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </form>
+            <% } %>
+
+
+
+
+
+
+
+
+
+                <%-include('footer')%>
+</body>

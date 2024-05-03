@@ -1,56 +1,37 @@
-<body>
+<body id="sign_in_body">
     <%-include('header') %>
-        <div id="form2">
-            <form action="/sign_up_form" method="POST">
-                <table class="form-table">
-                    <tr>
-                        <td><label for="firstName">First Name: </label></td>
-                        <td><input type="text" id="fname" name="firstName" maxlength="20" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="lastName">Last Name: </label></td>
-                        <td><input type="text" id="lname" name="lastName" maxlength="20" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="email">Email Address: </label></td>
-                        <td><input type="email" id="email" name="email" maxlength="100" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="email2">Reenter Email Address: </label></td>
-                        <td><input type="email" id="email2" name="email2" maxlength="100" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="username">Username: </label></td>
-                        <td><input type="username" id="username" name="username" maxlength="15" required></td>
-                    </tr>
-                    <tr>
-                        <td>Password: </label></td>
-                        <td><input type="password" id="password" name="password" minlenght="8" maxlength="10" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td id="passwordMessage" style="color: red;"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="birthday">BirthDate: </label></td>
-                        <td><input type="date" id="birthday" name="birthday" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="gender">Gender: </label></td>
-                        <td>
-                            <input type="radio" id="male" name="gender" value="male" required>
-                            <label for="male">Male</label><br>
-                            <input type="radio" id="female" name="gender" value="female" required>
-                            <label for="female">Female</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: center;"><button type="submit">Submit</button></td>
-                    </tr>
-                </table>
+
+        <div id="sign_in_form">
+
+            <form class="form-signin" action="/register" method="POST">
+
+                <img class="mb-4" src="images/images.png" alt="" width="140" height="140">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Create your account</h1>
+
+                <label for="firstName" class="sr-only">First Name</label>
+                <input type="text" id="firstName" class="form-control" name="firstName" placeholder="First name"
+                    required="" autofocus="">
+
+                <label for="lastName" class="sr-only">last Name</label>
+                <input type="text" id="lastName" class="form-control" name="lastName" placeholder="Last name"
+                    required="" autofocus="">
+
+                <label for="email" class="sr-only">Email address</label>
+                <input type="email" id="email" class="form-control" name="email" placeholder="Email address" required=""
+                    autofocus="">
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Password" required=""
+                    name="password">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
             </form>
         </div>
+
         <script>
             document.getElementById('password').addEventListener('input', function () {
                 var password = document.getElementById('password').value;

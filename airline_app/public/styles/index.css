@@ -6,28 +6,37 @@ body {
 }
 
 #body {
-    background-image: url(https://www.worldatlas.com/upload/be/9e/75/shutterstock-142872442.jpg);
-    background-size: 100%;
+    /* background-image: url(https://www.worldatlas.com/upload/be/9e/75/shutterstock-142872442.jpg); */
+    /* background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed; */
 }
 
-header {
-    align-items: center;
-    justify-content: space-around;
+#header {
+    height: 50px;
+    background-color: rgb(89, 96, 136);
     display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
-.heading {
-    color: antiquewhite;
-    text-align: left;
-    font-size: 60px;
-    font-family: cursive fantasy;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+#header_title {
+    padding-left: 20px;
+    width: 50%;
+    color: white;
+    font-family: cursive;
+
 }
+
+#myModal {
+    height: 500px;
+}
+
+#navigation {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
 
 nav {
     display: flex;
@@ -57,62 +66,14 @@ nav ul li a:hover {
 
 main {
     padding: 20px;
-}
-
-h3 {
-    color: black;
-    font-size: 30px;
+    background-color: rgb(96, 115, 143);
+    color: white;
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    height: 500px;
 }
 
-P {
-    color: black;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    font-size: 18px;
-    line-height: 1.5;
-    text-align: left;
-}
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    margin-top: 10%;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    max-width: 400px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 button {
     background-color: orchid;
@@ -131,21 +92,133 @@ button:hover {
     background-color: pink;
 }
 
+#sign_in_body {
+    background-image: url(https://www.worldatlas.com/upload/be/9e/75/shutterstock-142872442.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 
+}
 
-#form {
+#sign_in_form {
+
     background-color: aliceblue;
     width: 50%;
     padding: 40px;
     display: block;
+    margin-top: 10rem;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+    margin-bottom: 10rem;
 
 }
 
+#flight_search {
+    background-color: white;
+    border: 1px solid white;
+    height: 60%;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    color: black;
+}
+
+#flight {
+    width: 100%;
+    border: 1px solid white
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+
+
+}
+
+tr,
+td {
+
+    border: 1px solid rgb(204, 203, 203);
+    text-align: left;
+    box-sizing: border-box;
+
+
+}
+
+input[type=submit] {
+    background-color: green;
+    border: none;
+    color: white;
+    width: 100%;
+    display: block;
+
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: green;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: rgb(109, 184, 109);
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#travel_suggestions {
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+}
+
+input[type=text],
+input[type=date] {
+    height: 100%;
+    border: none;
+    text-decoration: none;
+    outline: none;
+    width: 100%;
+
+}
+
+td {
+
+    padding: 10px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
 #form2 {
-    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/10/Blue-Blank-Image.jpg);
+    /* background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/10/Blue-Blank-Image.jpg); */
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -154,6 +227,10 @@ button:hover {
     background-position: center;
     background-attachment: fixed;
     height: 100vh;
+}
+
+.form-control {
+    margin-bottom: 10px;
 }
 
 .form-table {
@@ -169,7 +246,7 @@ footer {
     align-items: center;
     justify-content: space-around;
 
-    color: aquamarine;
+    color: white;
     background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
@@ -186,8 +263,38 @@ footer p {
     padding-top: 100px
 }
 
-.mb-4 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#airport_info {
+    height: 50px;
+    margin-top: 50px;
+    border: solid 1px grey;
+}
+
+.dep_arr_times {
+    font-size: large;
+    color: rgb(96, 115, 143);
+    font-weight: bold;
+}
+
+/* styles.css */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Spacing between each form group */
+}
+
+.form-group label {
+    flex: 0 0 120px;
+    margin-right: 10px;
+
+}
+
+.form-group input,
+.form-group select {
+    flex: 1;
+
+
+    border: 1px solid #ccc;
+    padding: 5px;
+
 }
