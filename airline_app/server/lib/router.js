@@ -11,20 +11,25 @@ console.log('API Key:', process.env.MAPS_API);
 let router = express.Router();
 
 router.get('/support', (req, res) => {
-    if (req.isAuthenticated()) {
-        res.render('support')
-    } else {
-        res.redirect('sign_in_form')
+    if (req.isAuthenticated) {
+        const locals = {
+            title: 'sign up'
+        };
+        res.render('support', { locals })
     }
 });
+<<<<<<< HEAD
 router.get('/', (req, res) => {
     const locals = {
         title: 'Travel buddy home'
     };
     res.render("index",);
+=======
+>>>>>>> main
 
-})
+
 router.get('/sign_in_form', (req, res) => {
+<<<<<<< HEAD
     const locals = {
         title: 'sign up'
     };
@@ -34,12 +39,29 @@ router.get('/sign_in_form', (req, res) => {
         res.render('sign_in_form', { locals })
     }
 })
+=======
+    if (req.isAuthenticated) {
+        const locals = {
+            title: 'sign up'
+        };
+        res.render('index', { locals })
+    } else {
+        res.render('sign_in_form', { locals });
+    }
+});
+>>>>>>> main
 
 router.get('/sign_up_form', (req, res) => {
     const locals = {
         title: 'sign up'
     };
     res.render('sign_up_form', { locals });
+});
+router.get('/', (req, res) => {
+    const locals = {
+        title: 'sign up'
+    };
+    res.render('index', { locals });
 });
 
 router.get('/index', (req, res) => {
