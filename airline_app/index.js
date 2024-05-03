@@ -11,7 +11,7 @@ import bcrypt from 'bcrypt';
 import { Server } from 'socket.io'; // Importing Socket.IO
 import http from 'http';
 import Stripe from 'stripe';
-import sharedSession from 'express-socket.io-session';
+
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -30,6 +30,7 @@ app.use(express.json());
 
 // Configure Stripe with the secret key from the environment variable
 const stripe = Stripe(process.env.STRIPE_API_KEY);
+
 
 // PostgreSQL client setup
 const client = new pg.Client({
